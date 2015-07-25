@@ -1,6 +1,74 @@
 <% if @status.to_s == "404" %>
 
-	Sorry, this page is missing!
+  <style>
+    h1 {
+      font-size: 150%;
+      color: #f00;
+      line-height: 1.5em;
+      margin-bottom: 0;
+      padding-bottom: 0.5em;
+    }
+    
+		.error_container {
+			display: block;
+			margin: 2em auto 2em auto;
+			width: 45%;
+		}
+		
+		.error_container .error {
+			display: block;
+			text-align: center;
+		}
+		
+		.error_container .error img.alert {
+			display: block;
+			margin: 0 auto 0px auto !important;
+      box-shadow: 0 0px 5px rgba(50, 50, 50, 0.17);
+      padding: 0;
+		}
+		
+		.error_container .message > * {
+			display: block;
+		}
+		
+		.error_container .message strong {
+			font-weight: bold;
+			font-size: 1.5em;
+			color: #666;
+			margin: 15px 0 0;
+		}
+
+		.error_container .message span {
+			margin: 5px auto 0;
+			font-size: 0.75em;
+			color: gray;
+		}
+    
+    .error_container .message {
+      border-top: solid 4px red;
+      border-radius: 3px 3px 0 0;
+      padding-bottom: 1em;
+      box-shadow: 0 0px 5px rgba(50, 50, 50, 0.17);
+      margin-top: 5em;
+    }
+  </style>
+  
+  <div class="error_container">
+  	<div class="error">
+
+  		<!--Alert -->
+  		<%= image_tag 'exception_handler/alert.png', width: "150", alt: "Error!", title: "Page not found", class: "alert" %>
+	
+  		<!--Message -->
+  		<div class="message">
+        <h1>The page you were looking for doesn't exist.</h1>
+        <p>You may have mistyped the address or the page may have moved.</p>
+  			<strong><%= details[:name] %></strong>
+  			<span><%= details[:message] %></span>
+  		</div>
+		
+  	</div>
+  </div>
 
 <% else %>
 
@@ -11,6 +79,7 @@
 	
 		<!--Message -->
 		<div class="message">
+      <h1>We're sorry, but something went wrong.</h1>
 			<strong><%= details[:name] %></strong>
 			<span><%= details[:message] %></span>
 		</div>
